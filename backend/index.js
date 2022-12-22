@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const express = require("express");
 const bodyParser = require("body-parser");
 
+const port = 5000;
+
 const app = express();
 mongoose.set("strictQuery", false);
 
@@ -27,6 +29,6 @@ mongoose.connect(
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/notes", require("./routes/notes"));
 
-app.listen(3000, function () {
+app.listen(port, function () {
   console.log("listening on port 3000");
 });
