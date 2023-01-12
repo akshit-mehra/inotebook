@@ -1,7 +1,8 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
 const express = require("express");
-const bodyParser = require("body-parser");
+
+var cors = require('cors')
 
 const port = 5000;
 
@@ -9,6 +10,7 @@ const app = express();
 mongoose.set("strictQuery", false);
 
 app.use(express.json());
+app.use(cors())
 
 // connect to mongodb
 mongoose.connect(
