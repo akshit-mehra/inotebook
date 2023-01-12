@@ -1,5 +1,5 @@
 import React from 'react'
-import NoteContext from './NoteContext'
+import noteContext from './NoteContext';
 import { useState } from 'react';
 
 const NoteState = (props) => {
@@ -66,12 +66,35 @@ const InitialNotes = [
 
 const [notes, setNotes] = useState(InitialNotes);
 
+// Add note
+const addNote = (title, description, tag) => {
+  const note = {
+    "_id": "63a4c599dd6cd2769bd0b956",
+    "user": "63a065379d237c833dc6f461",
+    "title": title,
+    "description": description,
+    "tag": tag,
+    "date": "2022-12-22T21:01:13.714Z",
+    "__v": 0
+  }
+
+  console.log("adding a new note");
+  setNotes(notes.concat(note));
+};
+
+const deleteNote = () => {
+
+};
+
+const editNote = () => {
+
+};
 
     
     return(
-        <NoteContext.Provider value = {{notes, setNotes}}>
+        <noteContext.Provider value = {{notes, setNotes, addNote, deleteNote, editNote}}>
             {props.children}
-        </NoteContext.Provider>
+        </noteContext.Provider>
     )
 };
 

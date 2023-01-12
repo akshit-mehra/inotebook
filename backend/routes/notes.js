@@ -49,47 +49,50 @@ router.post(
 );
 
 // ROUTE 3 :updating a note using : PUT :: Login required
-router.put("/updatenote/:id", fetchuser, [], (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
-  }
+router.put('/updatenote/:id', fetchuser, async (req, res) => {
+  const { title, description, tag } = req.body;
+  try {
+      // Create a newNote object
+      const newNote = {};
+      if (title) { newNote.title = title };
+      if (description) { newNote.description = description };
+      if (tag) { newNote.tag = tag };
 
-  const newNote = {};
-  if (req.body.title.length != 0) {
-    newNote.title = req.body.title;
-  }
-  if (req.body.description.length != 0) {
-    newNote.description = req.body.description;
-  }
-  if (req.body.tag.length != 0) {
-    newNote.tag = req.body.ag;
-  }
+      // Find the note to be updated and update it
+      let note = await Notes.findById(req.params.id);
+      if (!note) { return res.status(404).send("Not Found") }
 
-  Notes.findById(req.params.id, async function (err, note) {
-    if (!note) {
-      return res.status(404).send("Not found");
-    }
-    if (err) {
-      return res.send("error occoured");
-    }
-    if (note.user.toString() !== req.user.id) {
-      return res.send("not authorized");
-    }
-
-    Notes.updateOne(
-      { id: req.params.id },
-      { $set: newNote },
-      function (error, updatednote) {
-        if (error) {
-          return res.send(error);
-        }
-
-        console.log("done updating");
-        console.log(newNote);
-        res.send(updatednote);
+      if (note.user.toString() !== req.user.id) {
+          return res.status(401).send("Not Allowed");
       }
-    );
-  });
+      note = await Notes.findByIdAndUpdate(req.params.id, { $set: newNote }, { new: true })
+      res.json({ note });
+  } catch (error) {
+      console.error(error.message);
+      res.status(500).send("Internal Server Error");
+  }
+})
+
+// ROUTE 4: Delete an existing Note using: DELETE "/api/notes/deletenote". Login required
+router.delete("/deletenote/:id", fetchuser, async (req, res) => {
+  try {
+    // Find the note to be delete and delete it
+    let note = await Notes.findById(req.params.id);
+    if (!note) {
+      return res.status(404).send("Not Found");
+    }
+
+    // Allow deletion only if user owns this Note
+    if (note.user.toString() !== req.user.id) {
+      return res.status(401).send("Not Allowed");
+    }
+
+    note = await Notes.findByIdAndDelete(req.params.id);
+    res.json({ Success: "Note has been deleted", note: note });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
 });
+
 module.exports = router;
