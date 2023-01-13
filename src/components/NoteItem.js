@@ -3,7 +3,7 @@ import { useContext } from "react";
 import noteContext from "../context/notes/NoteContext";
 
 const NoteItem = (props) => {
-  const { note } = props;
+  const { note, updateNote } = props;
 
   const context = useContext(noteContext);
   const { deleteNote } = context;
@@ -19,7 +19,7 @@ const NoteItem = (props) => {
 
             <div className="d-flex justify-content-between">
               <i className="fa-regular mx-2 fa-trash-can" onClick={() => {deleteNote(note._id)}}></i>
-              <i className="fa-regular mx-2 fa-pen-to-square"></i>
+              <i className="fa-regular mx-2 fa-pen-to-square" onClick={()=>{updateNote(note)}}></i>
             </div>
           </div>
         </div>

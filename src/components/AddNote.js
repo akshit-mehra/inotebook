@@ -14,12 +14,13 @@ const AddNote = () => {
     const handleClick = (e) => {
         e.preventDefault();
         addNote(note.title, note.description, note.tag);
+        setnote({title: "", description: "", tag: ""})
     };
 
   return (
     <form>
       <div className="my-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">
+        <label htmlFor="title" className="form-label">
           Title
         </label>
         <input
@@ -29,11 +30,14 @@ const AddNote = () => {
           name="title"
           aria-describedby="emailHelp"
           onChange={handleChange}
+          minLength={5}
+          required
+          value={note.title}
         />
        
       </div>
       <div className="mb-3">
-        <label htmlFor="exampleInputPassword1" className="form-label">
+        <label htmlFor="description" className="form-label">
          description
         </label>
         <input
@@ -42,6 +46,9 @@ const AddNote = () => {
           name="description"
           type="text"
           onChange={handleChange}
+          minLength={5}
+          required
+          value={note.description}
         />
       </div>
       <button type="submit" className="btn btn-primary" onClick={handleClick}>
