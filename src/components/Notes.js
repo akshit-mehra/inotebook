@@ -3,7 +3,7 @@ import NoteItem from "./NoteItem";
 import AddNote from "./AddNote";
 import noteContext from "../context/notes/NoteContext";
 
-const Notes = () => {
+const Notes = (props) => {
   const context = useContext(noteContext);
   const { notes, getNotes } = context;
 
@@ -28,6 +28,7 @@ const Notes = () => {
     // addNote(note.title, note.description, note.tag);
     editNote (note.id, note.etitle, note.edescription, note.etag);
     sref.current.click();
+    props.showAlert("Note has been updated", "success");
   };
 
   useEffect(() => {
@@ -130,13 +131,13 @@ const Notes = () => {
           </div>
         </div>
       </div>
-      <AddNote />
+      <AddNote showAlert={props.showAlert} />
       <h3>Your Notes</h3>
       <div className="row row-cols-3  my-3">
         {notes.map((note, i) => {
           return (
             <div key={i}>
-              <NoteItem note={note} updateNote={updateNote} />
+              <NoteItem note={note} updateNote={updateNote} showAlert={props.showAlert} />
             </div>
           );
         })}

@@ -1,14 +1,14 @@
 import React from "react";
 import Notes from "./Notes"
 
-const Home = () => {
+const Home = (props) => {
 
 
   return (
     <>
        <div className="my-5">
         </div>
-      <Notes />
+      <Notes showAlert={props.showAlert} />
     </>
   );
 };
