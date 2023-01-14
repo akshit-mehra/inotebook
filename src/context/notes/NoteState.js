@@ -87,7 +87,7 @@ const NoteState = (props) => {
 
     const json = response.json();
     console.log(json);
-    console.log("deleteNote   " + id);
+
     const newNotes = notes.filter((note) => {
       return note._id !== id;
     });

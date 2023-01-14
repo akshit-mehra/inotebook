@@ -53,7 +53,7 @@ router.post(
           }
         });
       } else {
-        return res.status(400).json({ message: "Email already in use" });
+        return res.status(400).json({ error: "Email already in use" });
       }
     });
 
