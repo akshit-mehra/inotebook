@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# Notes Website
+A simple solution to access, manage and edit you notes at one place
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
 
-## Available Scripts
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [License](#license)
 
-In the project directory, you can run:
+## Introduction
+Notes Website is a web application developed while learning the MERN stack. The app allows users to create, edit, and manage their personal notes securely. It incorporates a responsive user interface using React.js, enabling users to intuitively interact with their notes. The backend is built using Node.js and Express.js, providing a RESTful API for secure management of notes. User authentication and authorization features have been implemented using JWT (JSON Web Tokens) to ensure secure access to personal notes.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Create, Edit, and Manage Notes**: Users can create, edit, and manage their personal notes through the website. This allows them to easily jot down their thoughts, ideas, reminders, and more, and organize them effectively.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Responsive User Interface**: The user interface of the Notes Website is designed to be responsive, adapting to different screen sizes and devices. This ensures a seamless and intuitive experience for users, whether they are accessing the app from a desktop computer, laptop, tablet, or mobile phone.
 
-### `npm test`
+- **RESTful API**: The backend of the Notes Website is built using Node.js and Express.js, providing a RESTful API for interacting with the notes data. This allows for secure and efficient communication between the frontend and backend components of the application.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **User Authentication and Authorization**: The app incorporates user authentication and authorization features using JWT (JSON Web Tokens). This ensures that only authenticated users have access to their personal notes and prevents unauthorized access.
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To install and use the Notes Website, follow these steps:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository: `git clone https://github.com/akshit-mehra/inotebook.git`
+2. Navigate to the project directory: `cd inotebook`
+3. Install the required dependencies:
+   - Frontend: `npm install`
+   - Backend: `cd backend && npm install`
+4. Configure the environment variables:
+   - Add an  `.env` to both the `client` and `backend` directories.
+   - Update the environment variables in the `.env` files to match your configuration (e.g., database connection details, JWT secret).
+5. Start the development server:
+   - Frontend: In the `home` directory, run `npm run start`.
+   - Backend: In the `backend` directory, run `nodemon`.
+6. Access the Notes Website in your web browser at `http://localhost:3000`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Feel free to explore the Notes Website, create, edit, and manage your personal notes securely.
 
-### `npm run eject`
+## License
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The Notes Website is released under the [MIT License](LICENSE). You are free to use, modify, and distribute this software. See the [LICENSE](LICENSE) file for more details.
